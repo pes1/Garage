@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garage1_0", "Garage1.0_00\Garage1_0.csproj", "{C96BA774-74F1-462F-9DFE-7CC1A583F839}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garage1_0Tests", "Garage1_0Tests\Garage1_0Tests.csproj", "{D707E6DA-BCB6-4223-A577-028AC9F434E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C96BA774-74F1-462F-9DFE-7CC1A583F839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C96BA774-74F1-462F-9DFE-7CC1A583F839}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C96BA774-74F1-462F-9DFE-7CC1A583F839}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C96BA774-74F1-462F-9DFE-7CC1A583F839}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D707E6DA-BCB6-4223-A577-028AC9F434E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D707E6DA-BCB6-4223-A577-028AC9F434E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D707E6DA-BCB6-4223-A577-028AC9F434E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D707E6DA-BCB6-4223-A577-028AC9F434E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A2220A7-782B-4B17-B7A0-B06EF6ED600E}
+	EndGlobalSection
+EndGlobal
