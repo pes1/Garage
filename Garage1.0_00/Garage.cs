@@ -5,15 +5,9 @@ namespace Garage1_0
 {
     public class Garage<T> : IEnumerable<T> where T :  Vehicle   //, IBuildABuilding
     {
-        public int ParkingSpots 
-        {
-            get { return ParkingSpots = 0;     }
-            set {        ParkingSpots = value; }
-
-        }
-
-        public string Name { get => name; set => name = value; }
-
+        public int     ParkingSpots {get { return ParkingSpots = 0;     }
+                                     set {        ParkingSpots = value; } }
+        public  string Name        { get => name; set =>  name = value; }
         private string name;
 
 
@@ -21,6 +15,12 @@ namespace Garage1_0
         {
             
         }
+
+
+
+
+
+
 
         public IEnumerator<T> GetEnumerator()
         {

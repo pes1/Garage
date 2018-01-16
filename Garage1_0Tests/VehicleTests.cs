@@ -32,5 +32,20 @@ namespace Garage1_0.Tests
 
             //Assert.Fail();
         }
+
+        [TestMethod()]
+        public void VehicleTest3()
+        {
+            Vehicle ettFordon = new Vehicle();
+            Assert.IsTrue(ettFordon is Vehicle);
+        }
+
+        [TestMethod()]
+        public void VehicleTest4()
+        {
+            Vehicle ettFordon = new Vehicle();
+            Console.WriteLine("Färgen är: " + ettFordon.Color);
+            Assert.IsTrue(ettFordon.Color == "NoColor");
+        }
     }
 }
