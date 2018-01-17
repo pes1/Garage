@@ -1,9 +1,10 @@
 ﻿namespace Garage1_0
 {
-    public class Vehicle
+    public abstract class Vehicle
     {
-        enum FordonsTyper
+        public enum FordonsTyper
         {
+            None,
             Personbil,
             Lastbil,
             Buss,
@@ -17,27 +18,46 @@
             Terrängskoter,
             Terrängsläp,
             Terrängvagn,
-            Airplane,
-            Båt
+            Flygplan,
+            Båt,
+            Last
         }
 
-        public string Color { get; private set; }
-        public float Weight { get; private set; }
-        public float Length { get; private set; }
-        private FordonsTyper VehicleType { get; }
+        public string        Color       { get; private set; }
+        public float         Weight      { get; private set; }
+        public float         Length      { get; private set; }
+        public FordonsTyper  VehicleType { get; private set; }
 
-        public Vehicle()
+        public Vehicle() //- test av konstruktorer
         {
             VehicleType = FordonsTyper.Personbil;
             Color = "NoColor";
             Weight = 0f;              // default
             Length = 0f;              // default
+        }
+        public Vehicle(FordonsTyper fordonsTyp, string färg)
+        {
+            VehicleType = fordonsTyp;
+            Color = färg;
+            System.Console.WriteLine("Vehicle av typen: {0}", fordonsTyp);
+        }
 
+        
+
+        public Vehicle(FordonsTyper fordonsTyp, string färg, float Weight, float Length)
+        {
+            VehicleType = fordonsTyp;
+            Color = färg;
+            this.Weight = Weight;
+            this.Length = Length;
+            System.Console.WriteLine("Vehicle av typen: {0} vilket väger: {1} kg med längden: {2} m", 
+                                    fordonsTyp, this.Weight, this.Length);
         }
 
 
 
-}//- of class
+
+    }//- of class
 
 
 

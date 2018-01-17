@@ -11,11 +11,15 @@ namespace Garage1_0
         private string name;
 
 
-        public Garage(Vehicle fordon)
-        {
-            
-        }
+        //public Garage(Vehicle fordon)
+        //{
 
+        //}
+
+        public Garage(int parkingPlatser)
+        {
+            this.ParkingSpots = parkingPlatser;
+        }
 
 
 

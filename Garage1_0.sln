@@ -7,6 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garage1_0", "Garage1.0_00\G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garage1_0Tests", "Garage1_0Tests\Garage1_0Tests.csproj", "{D707E6DA-BCB6-4223-A577-028AC9F434E2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FordonsMap", "FordonsMap", "{E17D5965-0D16-4D1F-81B6-E7B27231F0E9}"
+	ProjectSection(SolutionItems) = preProject
+		Garage1.0_00\Motorcykel.cs = Garage1.0_00\Motorcykel.cs
+		Garage1.0_00\Personbil.cs = Garage1.0_00\Personbil.cs
+		Garage1.0_00\Vehicle.cs = Garage1.0_00\Vehicle.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

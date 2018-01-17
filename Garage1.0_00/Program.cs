@@ -21,9 +21,9 @@ namespace Garage1_0
             Console.WriteLine("Välj siffran 1 för att starta  Admininstrationssystemet");
 
 
-            Vehicle bil01 = new Vehicle();
-
-            Garage<Vehicle> ettFintGarage = new Garage<Vehicle>(bil01);
+            //Vehicle bil01 = new Personbil();
+            //Garage<Vehicle> ettFintGarage = new Garage<Vehicle>(bil01);
+            Garage<Vehicle> ettFintGarage = new Garage<Vehicle>(10);
 
 
         }
