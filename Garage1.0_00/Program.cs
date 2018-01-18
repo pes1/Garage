@@ -19,15 +19,15 @@ namespace Garage1_0
         /// <param name="args"></param>
         static void Main()
         {
-            Console.WriteLine("~~~~                        ~~~~");
-            Console.WriteLine("~~~~     Garage XYZ         ~~~~");
-            Console.WriteLine("~~~~                        ~~~~");
-            Console.WriteLine("~~~~ Administrationssystem  ~~~~");
-            Console.WriteLine("~~~~                        ~~~~");
-
-            Console.WriteLine();
-            Console.WriteLine("Välj siffran 0 för att avsluta Admininstrationssystemet");
-            Console.WriteLine("Välj siffran 1 för att starta  Admininstrationssystemet");
+            ConfigureGarage.Textutskrift("~~~~                        ~~~~");
+            ConfigureGarage.Textutskrift("~~~~     Garage XYZ         ~~~~");
+            ConfigureGarage.Textutskrift("~~~~                        ~~~~");
+            ConfigureGarage.Textutskrift("~~~~ Administrationssystem  ~~~~");
+            ConfigureGarage.Textutskrift("~~~~                        ~~~~");
+            ConfigureGarage.Textutskrift("");
+            ConfigureGarage.Textutskrift("");
+            ConfigureGarage.Textutskrift("Välj siffran 0 för att avsluta Admininstrationssystemet");
+            ConfigureGarage.Textutskrift("Välj siffran 1 för att starta  Admininstrationssystemet");
 
             
 
@@ -35,13 +35,21 @@ namespace Garage1_0
 
 
 
-            bool run = startAdminProgram(); //- Starta eller avsluta 
+            bool run      = ConfigureGarage.StartAdminProgram(); //- Starta eller avsluta 
+            int GarageSize = -1;
+            if (run)
+            {
+                ConfigureGarage.Textutskrift("Val av garagestorlek ");
+                 GarageSize = ConfigureGarage.garageSize();
+            }
+
+            Garage<Vehicle> MittFinaGarage = ConfigureGarage.BuildAGarage(GarageSize);
             while (run)
             {
-
-                Console.WriteLine("Please navigate through the menu by enter the number \n(1, 2..5, 0) of your choice"
+                
+                ConfigureGarage.Textutskrift("Please navigate through the menu by enter the number \n(1, 2..5, 0) of your choice"
                     + "\n1. lista samtliga parkerade fordon"
-                    + "\n2. lägga till och ta bort fordon ur garaget"
+                    + "\n 2. lägga till och ta bort fordon ur garaget"
                     + "\n3. sätta en kapacitet(antal parkeringsplatser) vid instansieringen av ett nytt garage"
                     + "\n4. hitta ett specifikt fordon via registreringsnumret"
                     + "\n5. söka efter fordon utifrån egenskap, till exempel alla svarta fordon med fyra hjul"
@@ -56,15 +64,15 @@ namespace Garage1_0
                 }
                 catch (IndexOutOfRangeException) //If the input line is empty, we ask the users for some input.
                 {
-                    Console.Clear();
-                    Console.WriteLine("Please enter some input!");
+                    ConfigureGarage.NollställTextFält();
+                    ConfigureGarage.Textutskrift("Please enter some input!");
                 }
                 switch (input)
                 {
                     case '1':
                         ExamineList();
                         break;
-                    case '2':
+                    case '2':                   //"lägga till och ta bort fordon ur garaget"
                         ExamineQueue();
                         break;
                     case '3':
@@ -80,79 +88,23 @@ namespace Garage1_0
                     case '0':
                         return;
                     default:
-                        Console.WriteLine("Please enter some valid input (0, 1, 2, 3, 4)");
+                        ConfigureGarage.Textutskrift("Please enter some valid input (0, 1, 2, 3, 4)");
                         break;
                 }
-            }
-        }
-
-        private static bool startAdminProgram()
-        {
-            int val = 9999;
-            bool run = true;
-
-
-            while (run)
-            {
-                string texten = Inmatning("\n\nAnge val (0  eller 1) : ");
-
-                if (isItAnumber(texten, 0, 1)) { val = Convert.ToInt32(texten); }
-                else { val = -1; }
-
-
-                switch (val)
-                {
-                    case 0: Console.WriteLine("Avslutar program " + val); run = false; return false;
-                    case 1: Console.WriteLine("Startar GarageProgram");   run = true;  return true;
-                   default: Console.WriteLine("Ogiltigt val");            run = true;  break;
-
-                }
-
             } //- of while
-            return false;  //- 
+
+            ConfigureGarage.Textutskrift("\n\n\t ~~~~~~~~~~~~ End of program ~~~~~~~~~~~~");
+            ConfigureGarage.Textutskrift("\t ~~~~~~~~~~~~ End of program ~~~~~~~~~~~~");
+            ConfigureGarage.Textutskrift("\t ~~~~~~~~~~~~ End of program ~~~~~~~~~~~~");
         }
 
 
 
 
 
-        private static string Inmatning(string UtskriftsText)
-        {
 
-            // Console.WriteLine("Ange val: ");
-            Console.WriteLine(UtskriftsText);
-            //var input1 = Console.ReadLine();
-            string input1 = Console.ReadLine();
-            return input1;
-        }
 
-        //int Inmatning(string UtskriftsText, lägstaVärde, högstavärde)
-        private static bool isItAnumber(string input1, int lägstaVärde, int högstavärde)
-        {
-            int number = 0;
-            try
-            {
-                bool canConvert = int.TryParse(input1, out number);
-                if (canConvert == true)
-                {
-                    if ((number >= lägstaVärde) && (number <= högstavärde))
-                    {
-                        return true;
-                    }
-                }
-                else
-                {
-                    //Console.WriteLine("för avslutande av kassa, skriv avslut !");
-                    return false;
-                }
-            }
-            catch
-            {
-                Console.WriteLine("Fel format");
-                return false;
-            }
-            return false;
-        }//- of isItAnumber
+
 
 
 
