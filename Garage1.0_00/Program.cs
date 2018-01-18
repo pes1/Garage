@@ -39,12 +39,16 @@ namespace Garage1_0
             while (run)
             {
 
-                Console.WriteLine("Please navigate through the menu by inputting the number \n(1, 2, 3 ,4, 0) of your choice"
-                    + "\n1. Examine a List"
-                    + "\n2. Examine a Queue"
-                    + "\n3. Examine a Stack"
-                    + "\n4. CheckParanthesis"
+                Console.WriteLine("Please navigate through the menu by enter the number \n(1, 2..5, 0) of your choice"
+                    + "\n1. lista samtliga parkerade fordon"
+                    + "\n2. lägga till och ta bort fordon ur garaget"
+                    + "\n3. sätta en kapacitet(antal parkeringsplatser) vid instansieringen av ett nytt garage"
+                    + "\n4. hitta ett specifikt fordon via registreringsnumret"
+                    + "\n5. söka efter fordon utifrån egenskap, till exempel alla svarta fordon med fyra hjul"
                     + "\n0. Exit the application");
+
+                
+
                 char input = ' '; //Creates the character input to be used with the switch-case below.
                 try
                 {
