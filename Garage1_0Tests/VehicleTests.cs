@@ -15,7 +15,9 @@ namespace Garage1_0.Tests
         public void VehicleTest01()
         {
             Garage<Vehicle> ettFintGarage = new Garage<Vehicle>(10);
-            Assert.IsTrue(ettFintGarage is Garage<Vehicle>);
+            //Assert.IsTrue(ettFintGarage is Garage<Vehicle>);
+            Assert.IsTrue(
+                ettFintGarage.NoOfParkingSpots == 10);
 
             //Assert.AreEqual(     , ettFintGarage);
 
@@ -25,8 +27,9 @@ namespace Garage1_0.Tests
         [TestMethod()]
         public void VehicleTest02()
         {
-            Garage<Vehicle> ettFintGarage = new Garage<Vehicle>(10);
-            Assert.IsTrue(ettFintGarage is Garage<Vehicle>);
+            Garage<Vehicle> ettFintGarage = new Garage<Vehicle>(100);
+            Assert.IsTrue(
+                ettFintGarage.NoOfParkingSpots >= 10);
 
             //Assert.AreEqual(     , ettFintGarage);
 
@@ -49,6 +52,7 @@ namespace Garage1_0.Tests
             Console.WriteLine("Längden är: \t" + ettFordon.Length);
             Assert.IsTrue(ettFordon.Color == "NoColor");
         }
+
         [TestMethod()]
         public void VehicleTest05() //- Default values.
         {
@@ -56,11 +60,11 @@ namespace Garage1_0.Tests
             Console.WriteLine("Färgen  är: \t" + ettFordon.Color);
             Console.WriteLine("Vikten  är: \t" + ettFordon.Weight);
             Console.WriteLine("Längden är: \t" + ettFordon.Length);
-            if (ettFordon.VehicleType== Vehicle.FordonsTyper.Personbil)
+            if (ettFordon.VehicleType == Vehicle.FordonsTyper.Personbil)
             {
                 Console.WriteLine("Fordonet är en: {0}", ettFordon.VehicleType);
             }
-            
+
 
             Assert.IsTrue(ettFordon.VehicleType == Vehicle.FordonsTyper.Personbil);
         }
@@ -86,10 +90,10 @@ namespace Garage1_0.Tests
         [TestMethod()]
         public void VehicleTest07() //- Default values.
         {
-            Vehicle ettFordon = new Personbil("Röd",1500f, 5f,"BCA321");
-            Console.WriteLine("Färgen  är: \t"         + ettFordon.Color.ToLower());
+            Vehicle ettFordon = new Personbil("Röd", 1500f, 5f, "BCA321");
+            Console.WriteLine("Färgen  är: \t" + ettFordon.Color.ToLower());
             Console.WriteLine("Vikten  är: \t{0} \t kg", ettFordon.Weight);
-            Console.WriteLine("Längden är: \t{0} \t m",  ettFordon.Length);
+            Console.WriteLine("Längden är: \t{0} \t m", ettFordon.Length);
             if (ettFordon.VehicleType == Vehicle.FordonsTyper.Personbil)
             {
                 Console.WriteLine("Fordonet är en: {0}", ettFordon.VehicleType);
@@ -167,9 +171,9 @@ namespace Garage1_0.Tests
             Vehicle ettFordon = new Flygplan("Lila", 40000f, 40f, "SE444");
 
             // Act
-            Console.WriteLine("Färgen  är: \t"         + ettFordon.Color.ToLower());
+            Console.WriteLine("Färgen  är: \t" + ettFordon.Color.ToLower());
             Console.WriteLine("Vikten  är: \t{0} \t kg", ettFordon.Weight);
-            Console.WriteLine("Längden är: \t{0} \t m",  ettFordon.Length);
+            Console.WriteLine("Längden är: \t{0} \t m", ettFordon.Length);
             if (ettFordon.VehicleType == Vehicle.FordonsTyper.Flygplan)
             {
                 Console.WriteLine("Fordonet är en: {0}", ettFordon.VehicleType);
@@ -179,21 +183,64 @@ namespace Garage1_0.Tests
             Assert.IsTrue(ettFordon.VehicleType == Vehicle.FordonsTyper.Flygplan);
         }
 
-      
+
+        [TestMethod()]
+        public void VTGarageTest12_SkapaGarage_OKresultat() //- Default values.
+        {
+            // Arrange
+            int noOfP_Spots      = 11;
+            var GaragetElefanten = new Garage<Vehicle>(noOfP_Spots);
+
+            // Act
+            Console.WriteLine("Garaget heter: \t{0} ",           GaragetElefanten.Name);
+            Console.WriteLine("Garaget har:   \t{0} \t platser", GaragetElefanten.NoOfParkingSpots);
 
 
+            // Assert
+            Assert.IsTrue(GaragetElefanten.NoOfParkingSpots == noOfP_Spots);
+        }
+
+        [TestMethod()]
+        public void VTGarageTest13_SkapaGarage_2ParametrarOKresultat() //- Default values.
+        {
+            // Arrange
+            int noOfP_Spots = 11;
+            var GaragetElefanten = new Garage<Vehicle>("Elefanten", noOfP_Spots);
+
+            // Act
+            Console.WriteLine("Garaget heter: \t{0} ",           GaragetElefanten.Name);
+            Console.WriteLine("Garaget har:   \t{0} \t platser", GaragetElefanten.NoOfParkingSpots);
 
 
+            // Assert
+            Assert.IsTrue(GaragetElefanten.NoOfParkingSpots == noOfP_Spots);
+        }
 
+
+        [TestMethod()]
+        public void VTGarageTest14_SkapaGarage_med_fordon_OKresultat() //- Default values.
+        {
+            // Arrange
+            int noOfP_Spots = 11;
+            var GaragetElefanten = new Garage<Vehicle>("Elefanten", noOfP_Spots);
+
+            // Act
+            Console.WriteLine("Garaget heter: \t{0} ", GaragetElefanten.Name);
+            Console.WriteLine("Garaget har:   \t{0} \t platser", GaragetElefanten.NoOfParkingSpots);
+
+
+            // Assert
+            Assert.IsTrue(GaragetElefanten.NoOfParkingSpots == noOfP_Spots);
+        }
 
 
 
 
     } //- of class VehicleTests
 
-   
 
 
 
 
-    }
+
+}
