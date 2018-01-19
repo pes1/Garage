@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,30 +7,36 @@ using System.Threading.Tasks;
 
 namespace Garage1_0
 {
-    class ConfigureGarage
+    // class ConfigureGarage<T> : IEnumerable<T> where T : Vehicle
+     public class ConfigureGarage
     {
+        private Object ettGarage = null;
+        public  Object EttGarage { get => ettGarage; set => ettGarage = value; }
+
+
+
         public static bool StartAdminProgram()
         {
-
             //- tanken är att få getInput att leverera ett antal insträngar och val från StartAdminProgram().
             if (getLongInput()) { return true; }
             else { return false; }
-
-
         }
 
         //- How   big   a garage is wanted ?
-        public static int garageSize()
+        public static int garageSize(string garageSizeQuestion)
         {
-            return getValueInput();
+            return getValueInput(minimiStorlek: 1, maximiStorlek:100, outputText:garageSizeQuestion);
         }
 
-        public static Garage<Vehicle> BuildAGarage(int noOfParkinSpots)
+        // --------------------------------------------------------------------------------------------
+        // --------------------------------------------------------------------------------------------
+        // --------------------------------------------------------------------------------------------
+
+        public static  Object BuildAGarage(int noOfParkinSpots)
         {
-
-            Garage<Vehicle> ettFintGarage = new Garage<Vehicle>(noOfParkinSpots);
-            return ettFintGarage;
-
+            ConfigureGarage DetNyaGaraget = new ConfigureGarage();
+            DetNyaGaraget.EttGarage =   new Garage<Vehicle>(noOfParkinSpots);
+            return DetNyaGaraget;
         }
 
 
@@ -39,18 +46,16 @@ namespace Garage1_0
 
 
 
-
-        static int getValueInput()
-        {
+            public static int getValueInput(int minimiStorlek, int maximiStorlek, string outputText)
+            {
             int val = 9999;
             bool run = true;
-            int minimiStorlek = 1;
-            int maximiStorlek = 100;
+            //int minimiStorlek = 1;
+            //int maximiStorlek = 100;
 
             while (run)
             {
-                string texten = Inmatning("\n\nAnge Hur stort garaget skall vara."
-                                        + "\nAnge i form av antal parkeringsplatser");
+                string texten = Inmatning(outputText);
 
                 if (isItAnumber(texten, minimiStorlek, maximiStorlek)) { val = Convert.ToInt32(texten); }
                 else { val = -1; }
@@ -100,9 +105,6 @@ namespace Garage1_0
             return false;  //- 
         }
 
-
-
-
         private static string Inmatning(string UtskriftsText)
         {
 
@@ -112,9 +114,6 @@ namespace Garage1_0
             string input1 = Console.ReadLine();
             return input1;
         }
-
-
-
 
         //int Inmatning(string UtskriftsText, lägstaVärde, högstavärde)
         private static bool isItAnumber(string input1, int lägstaVärde, int högstavärde)
@@ -145,7 +144,10 @@ namespace Garage1_0
         }//- of isItAnumber
 
 
-
+        Vehicle personbil(string bilfärg, float Weight, float Length, string regnummer)
+        {
+            return personbil(bilfärg: bilfärg, Weight: Weight, Length: Length, regnummer: regnummer);
+        }
 
 
         // --------------------------------------------------------------------------------------------
@@ -160,6 +162,7 @@ namespace Garage1_0
         // --------------------------------------------------------------------------------------------
         // --------------------------------------------------------------------------------------------
         // --------------------------------------------------------------------------------------------
+        public   static void NollställSkärm() { NollställTextFält(); }
         internal static void NollställTextFält()
         {
             Console.Clear();
@@ -175,6 +178,16 @@ namespace Garage1_0
             if (input1 == validText) { return true; }
             else { return false; }
         }//- of isItValidText
+
+        //public IEnumerator<Vehicle> GetEnumerator()
+        //{
+        //    return ((IEnumerable<Vehicle>)EttGarage).GetEnumerator();
+        //}
+
+        //IEnumerator IEnumerable.GetEnumerator()
+        //{
+        //    return ((IEnumerable<Vehicle>)EttGarage).GetEnumerator();
+        //}
 
 
         // --------------------------------------------------------------------------------------------

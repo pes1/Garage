@@ -9,7 +9,7 @@ namespace Garage1_0
 {
     public class Personbil : Vehicle
     {
-        private string registreringsNummer = "ABC123";
+        private   string registreringsNummer = "ABC123";
         protected string RegistreringsNummer
                     { get => registreringsNummer;
                       set => registreringsNummer = value; }

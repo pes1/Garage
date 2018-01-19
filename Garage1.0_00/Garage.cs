@@ -7,12 +7,11 @@ namespace Garage1_0
     {
         public int       NoOfParkingSpots { get => _noOfParkingSpots; set => _noOfParkingSpots = value; }
         public string    Name             { get => name;              set => name              = value; }
-        public T[] ParkingSpots     { get => parkinSpots;       set => parkinSpots = value; }
+        public T[]       ParkingSpots     { get => parkinSpots;       set => parkinSpots       = value; }
 
         private string name;
         private int    _noOfParkingSpots;
-
-        private T[] parkinSpots;
+        private T[]    parkinSpots;
 
         //public Garage(Vehicle fordon)
         //{
@@ -53,15 +52,16 @@ namespace Garage1_0
         /// <returns></returns>
         public bool CheckForFreeSpace()
         {
-            return true;
+            foreach(T plats in ParkingSpots)
+            {   if (  plats== null) { return true; }}
+            return false;
         }
+         
 
-
-        public IEnumerator<T> GetEnumerator()
+    public IEnumerator<T> GetEnumerator()
         {
             for (int index = 0; index < ParkingSpots.Length; index++)
             {
-                
                  yield return ParkingSpots[index];
             }
         }

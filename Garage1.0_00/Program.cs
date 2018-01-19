@@ -29,51 +29,48 @@ namespace Garage1_0
             ConfigureGarage.Textutskrift("Välj siffran 0 för att avsluta Admininstrationssystemet");
             ConfigureGarage.Textutskrift("Välj siffran 1 för att starta  Admininstrationssystemet");
 
-            
-
-
-
-
-
             bool run      = ConfigureGarage.StartAdminProgram(); //- Starta eller avsluta 
-            int GarageSize = -1;
-            if (run)
-            {
-                ConfigureGarage.Textutskrift("Val av garagestorlek ");
-                 GarageSize = ConfigureGarage.garageSize();
-            }
+            ConfigureGarage.NollställSkärm();
+            if (!run) { ConfigureGarage.Textutskrift("Avslutar Adminsystem");  return; }
 
-            Garage<Vehicle> MittFinaGarage = ConfigureGarage.BuildAGarage(GarageSize);
+
+
+            int GarageSize = -1;
+            if (run)      //-behövs inte längre....
+            {
+                //- "\n3. Sätta en kapacitet(antal parkeringsplatser) vid instansieringen av ett nytt garage"
+
+                ConfigureGarage.Textutskrift("Val av garagestorlek ");
+                 GarageSize = ConfigureGarage.garageSize("\n\nAnge Hur stort garaget skall vara."
+                                                         + "\nAnge i form av antal parkeringsplatser");
+            }
+            Object MittFinaGarage = ConfigureGarage.BuildAGarage(GarageSize);
+            ConfigureGarage.NollställSkärm();
+
+
             while (run)
             {
                 
                 ConfigureGarage.Textutskrift("Please navigate through the menu by enter the number \n(1, 2..5, 0) of your choice"
-                    + "\n1. lista samtliga parkerade fordon"
-                    + "\n 2. lägga till och ta bort fordon ur garaget"
-                    + "\n3. sätta en kapacitet(antal parkeringsplatser) vid instansieringen av ett nytt garage"
-                    + "\n4. hitta ett specifikt fordon via registreringsnumret"
-                    + "\n5. söka efter fordon utifrån egenskap, till exempel alla svarta fordon med fyra hjul"
-                    + "\n0. Exit the application");
+                    + "\n1. Lista samtliga parkerade fordon"
+                    + "\n2. Lägga till och ta bort fordon ur garaget"
+                    + "\n3. Hitta ett specifikt fordon via registreringsnumret"
+                    + "\n4. Sök efter fordon utifrån egenskap, till exempel alla svarta fordon med fyra hjul"
+                    + "\n0. Avsluta  applicationen");
 
-                
+                int input = ConfigureGarage.getValueInput(minimiStorlek: 1, 
+                                                          maximiStorlek: 100, 
+                                                          outputText:    "Skriv in ditt val: ");
 
-                char input = ' '; //Creates the character input to be used with the switch-case below.
-                try
-                {
-                    input = Console.ReadLine()[0]; //Tries to set input to the first char in an input line
-                }
-                catch (IndexOutOfRangeException) //If the input line is empty, we ask the users for some input.
-                {
-                    ConfigureGarage.NollställTextFält();
-                    ConfigureGarage.Textutskrift("Please enter some input!");
-                }
+
+
                 switch (input)
                 {
                     case '1':
-                        ExamineList();
+                        ListaParkeradFordon();
                         break;
                     case '2':                   //"lägga till och ta bort fordon ur garaget"
-                        ExamineQueue();
+                        ParkeraFordon(MittFinaGarage);
                         break;
                     case '3':
                         ExamineStack();
@@ -102,6 +99,16 @@ namespace Garage1_0
 
 
 
+        //char input = ' '; //Creates the character input to be used with the switch-case below.
+        //        try
+        //        {
+        //            input = Console.ReadLine()[0]; //Tries to set input to the first char in an input line
+        //        }
+        //        catch (IndexOutOfRangeException) //If the input line is empty, we ask the users for some input.
+        //        {
+        //            ConfigureGarage.NollställTextFält();
+        //            ConfigureGarage.Textutskrift("Please enter some input!");
+        //        }
 
 
 
@@ -130,11 +137,10 @@ namespace Garage1_0
 
 
 
-
-        /// <summary>
-        /// Examines the datastructure List
-        /// </summary>
-        static void ExamineList()
+/// <summary>
+/// Examines the datastructure List
+/// </summary>
+static void ListaParkeradFordon()
         {
             /*
              * Loop this method untill the user inputs something to exit to main menue.
@@ -157,8 +163,12 @@ namespace Garage1_0
         /// <summary>
         /// Examines the datastructure Queue
         /// </summary>
-        static void ExamineQueue()
+        static void ParkeraFordon(Object MittFinaGarage)
         {
+            ConfigureGarage.Textutskrift("Parkera bilar");
+
+            ConfigureGarage.Textutskrift(" Garagets typ" + MittFinaGarage.GetType() );
+
             /*
              * Loop this method untill the user inputs something to exit to main menue.
              * Create a switch with cases to enqueue items or dequeue items

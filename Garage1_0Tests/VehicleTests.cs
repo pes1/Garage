@@ -233,7 +233,25 @@ namespace Garage1_0.Tests
             Assert.IsTrue(GaragetElefanten.NoOfParkingSpots == noOfP_Spots);
         }
 
+        
 
+
+[TestMethod()]
+        public void VTGarageTest15_SkapaGarage_med_fordon_OKresultat() //- Default values.
+        {
+            // Arrange
+            int noOfP_Spots = 11;
+            var GaragetElefanten = new ConfigureGarage();
+
+            // Act
+            //Console.WriteLine("Garaget heter: \t{0} ", GaragetElefanten.Name);
+            Console.WriteLine("Garaget heter: \t{0} ",           GaragetElefanten.EttGarage.GetType());
+            Console.WriteLine("Garaget har:   \t{0} \t platser", GaragetElefanten.NoOfParkingSpots);
+
+
+            // Assert
+            Assert.IsTrue(GaragetElefanten.NoOfParkingSpots == noOfP_Spots);
+        }
 
 
     } //- of class VehicleTests
