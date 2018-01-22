@@ -35,7 +35,7 @@ namespace Garage1_0
         public static  Object BuildAGarage(int noOfParkinSpots)
         {
             ConfigureGarage DetNyaGaraget = new ConfigureGarage();
-            DetNyaGaraget.EttGarage =   new Garage<Vehicle>(noOfParkinSpots);
+            DetNyaGaraget.EttGarage       = new Garage<Vehicle>(noOfParkinSpots);
             return DetNyaGaraget;
         }
 

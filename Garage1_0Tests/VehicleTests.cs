@@ -230,7 +230,7 @@ namespace Garage1_0.Tests
 
 
             // Assert
-            Assert.IsTrue(GaragetElefanten.NoOfParkingSpots == noOfP_Spots);
+            Assert.IsTrue(!(GaragetElefanten == null));
         }
 
         
@@ -243,14 +243,21 @@ namespace Garage1_0.Tests
             int noOfP_Spots = 11;
             var GaragetElefanten = new ConfigureGarage();
 
+            GaragetElefanten= ConfigureGarage.BuildAGarage(noOfP_Spots);
+
+
+
             // Act
             //Console.WriteLine("Garaget heter: \t{0} ", GaragetElefanten.Name);
-            Console.WriteLine("Garaget heter: \t{0} ",           GaragetElefanten.EttGarage.GetType());
-            Console.WriteLine("Garaget har:   \t{0} \t platser", GaragetElefanten.NoOfParkingSpots);
+            //Console.WriteLine("Garaget heter: \t{0} ", GaragetElefanten.EttGarage.GetType());
+
+            if (GaragetElefanten.EttGarage == null) Console.WriteLine("Är lika med NULL"); else Console.WriteLine("Är inte NULL");
+            Console.WriteLine("Garaget är av typen: \t{0} ", GaragetElefanten.EttGarage?.GetType());
 
 
             // Assert
-            Assert.IsTrue(GaragetElefanten.NoOfParkingSpots == noOfP_Spots);
+            //Assert.IsTrue(GaragetElefanten.NoOfParkingSpots == noOfP_Spots);
+            Assert.IsTrue(GaragetElefanten.EttGarage?.GetType() == null ); //- ...................!ujuj
         }
 
 
